@@ -5,6 +5,7 @@ export function Todo(props) {
   // const [completeState, setCompleteState] = useState(false);
   const [editing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // useEffect(() => {
   //   window.localStorage.setItem("strike", JSON.stringify(completeState));
@@ -14,21 +15,69 @@ export function Todo(props) {
   //   setCompleteState((prevState) => !prevState);
   // }
 
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   editTodo(props.id, newName);
+  //   setNewName("")
+  //   setEditing(false)
+  // }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    editTodo(props.id, newName);
-    setNewName("")
-    setEditing(false)
+
+    if (newName.trim() === "") {
+      return; // Do not save an empty name
+    }
+
+    const normalizedNewName = newName.toLowerCase();
+    const nameExists = props.todoArray.some(
+      (todo) =>
+        todo.task.toLowerCase() === normalizedNewName && todo.id !== props.id
+    );
+
+    if (nameExists) {
+      setErrorMessage("Todo name already exists!");
+      return;
+    }
+
+    editTodo(props.id, capitalizeFirstLetter(newName));
+    setNewName("");
+    // Do not exit editing mode here
+  }
+
+  function clearEditErrorMessage() {
+    setErrorMessage(""); // Clear edit error message
   }
 
   function editTodo(todoIndex, newName) {
-    props.setTodoArray(props.todoArray.map(todo => {
-      if(todo.id === todoIndex){
-        todo.task = newName
-      }
-      return todo
-    }))
+    const normalizedNewName = newName.toLowerCase();
+    const nameExists = props.todoArray.some(
+      (todo) =>
+        todo.task.toLowerCase() === normalizedNewName && todo.id !== todoIndex
+    );
+
+    if (nameExists) {
+      setErrorMessage("Todo name already exists!");
+      return;
+    }
+
+    props.setTodoArray(
+      props.todoArray.map((todo) => {
+        if (todo.id === todoIndex) {
+          todo.task = newName;
+        }
+        return todo;
+      })
+    );
+
+    clearEditErrorMessage(); // Clear edit error message when successful
+    setEditing(false); // Exit editing mode after successful edit
   }
+
 
   function deleteTodo(todoIndex) {
     const newTodoArray = props.todoArray.filter(({ id }) => {
@@ -44,6 +93,14 @@ export function Todo(props) {
         <label htmlFor={props.id}>
           New name for task: <span className="task_name">{props.text}</span>
         </label>
+        {errorMessage && (
+          <p
+            className="edit-error-message"
+            style={{ color: "rgba(255, 0, 0, 0.63)", fontWeight: "bold" }}
+          >
+            {errorMessage}
+          </p>
+        )}
         <input
           type="text"
           id={props.id}

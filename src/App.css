@@ -354,6 +354,16 @@ input[type="text"]:hover {
   border: 1.5px solid;
 }
 
+.error-message {
+  background-color: rgba(255, 0, 0, 0.603);
+  color: white;
+  padding: .5rem;
+}
+
+.edit-error-message {
+  color: rgba(255, 0, 0, 0.63);
+}
+
 /* --- RESPONSIVE DESIGN --- */
 @media screen and (max-width: 600px) {
   .root {

@@ -7,6 +7,8 @@ function SubmitForm(props) {
     const data = window.localStorage.getItem("TODO_ARRAY");
     return JSON.parse(data) || []
   });
+  const [errorMessage, setErrorMessage] = useState("");
+  const clearErrorMessage = () => setErrorMessage("");
 
   useEffect(() => {
     window.localStorage.setItem("TODO_ARRAY", JSON.stringify(todoArray));
@@ -14,18 +16,38 @@ function SubmitForm(props) {
 
   function addTodo(e) {
     e.preventDefault();
-    if (todo !== "") {
+
+    if (todo.trim() === "") {
+      return; // Do not add an empty todo
+    }
+
+    const normalizedTodo = todo.toLowerCase(); // Convert new todo to lowercase
+    const todoExists = todoArray.some(
+      (todoEl) => todoEl.task.toLowerCase() === normalizedTodo
+    );
+
+    if (todoExists) {
+      setErrorMessage("Todo already exists! Please try again");
+      return;
+    } else {
+      const capitalizedTodo = capitalizeFirstLetter(todo);
       setTodoArray([
         ...todoArray,
         {
           id: todoArray.length + 1,
-          task: todo,
-          completed: false
+          task: capitalizedTodo,
+          completed: false,
         },
       ]);
       setTodo("");
+      clearErrorMessage();
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
   }
+
 
   function toggleTaskCompleted(id) {
     const updatedTodoArray = todoArray.map(todo => {
@@ -70,6 +92,7 @@ function SubmitForm(props) {
       <header className="App-header">
         <h1>My React Todo List App</h1>
       </header>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="form">
         <form className="form-input" onSubmit={addTodo}>
           <input
