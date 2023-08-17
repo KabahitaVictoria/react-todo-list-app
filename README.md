@@ -1,8 +1,7 @@
 # build-folder-for-todo-list-app
 
 ## App Screenshot
-![react-todo-list-app-screenshot](![react-todo-list-app-screenshot](https://github.com/KabahitaVictoria/react-todo-list-app/assets/89969629/4b160ef7-0673-4a9a-bf80-ecd8903e5028)
-)
+![react-todo-list-app-screenshot](https://github.com/KabahitaVictoria/react-todo-list-app/assets/89969629/4b160ef7-0673-4a9a-bf80-ecd8903e5028)
 
 This is a simple Todo List app built using React. It allows users to manage their tasks and keep track of their to-do items.
 
