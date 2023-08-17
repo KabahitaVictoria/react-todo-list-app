@@ -1,38 +1,395 @@
+body {
+  background: linear-gradient(90deg, #928eb9af, #f0d9bd48);
+  font-family: "Karla", sans-serif;
+}
+
+.root {
+  width: 100%;
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* NAVBAR */
+.nav {
+  display: flex;
+  border: 1px solid;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75em 1em;
+  background-color: black;
+  color: #eabfcb;
+}
+
+.links {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-nav {
+  padding: 0 0.7em;
+}
+
+.links a {
+  color: #eabfcb;
+}
+
+.links a:hover {
+  color: white;
+  transition: 0.5s;
+}
+
+/* LANDING PAGE */
+.intro {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 3em auto;
+  align-items: center;
+  /* height: 100vh; */
+  justify-content: center;
+}
+
+.intro--img {
+  background-color: rgba(0, 0, 0, 0.253);
+  border-radius: 5px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.intro form {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-input {
+  padding: 0.5em;
+}
+
+.link {
+  margin: 1.2em;
+  padding: 1em;
+  background-color: #1e1e58;
+  border: none;
+  border-radius: 5px;
+}
+
+.link:hover {
+  border: 2px solid;
+  transition: .1s;
+}
+
+.link--a {
+  color: white;
+  text-decoration: none;
+  font-family: "Karla" sans-serif;
+}
+
+/* TO-DO LIST PAGE */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin: 0 auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* HEADING */
+.App-header {
+  color: #1e1e58;
+}
+
+/* TASK FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+}
+
+.form-input {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  margin-bottom: 1.5em;
+}
+
+.input {
+  padding: 0.75em;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 1em;
+  margin-right: 0.2em;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0);
+  color: #1f4699;
+  font-weight: bold;
+  outline: none;
+  font-family: "Karla", sans-serif;
+}
+
+.add-button {
+  border-radius: 50%;
+  border: none;
+  padding: 0.5em 0.8em 0.5em 0.8em;
+  background-color: indigo;
+  color: white;
+  font-size: 1.5em;
+  margin-left: 0.2em;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  border: 2px solid black;
+  transition: .1s;
+}
+
+input[type="text"]:hover {
+  background-color: rgba(255, 255, 255, 0.226);
+  transition: 0.5s;
+  border-top: 1px solid black;
+}
+
+/* TODO LIST ITEMS */
+.todo--elements {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  background: linear-gradient(180deg, #928eb9af, #f0d9bd48);
+}
+
+.todo {
+  width: 70%;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5em;
+  padding: 0.75em;
+  border-radius: 3px;
+  font-size: 1.2rem;
+}
+
+.todo:hover {
+  background-color: rgba(0, 0, 0, 0.918);
+  transition: 0.5s;
+}
+
+.todo div {
+  display: flex;
+}
+
+.text-div {
+  width: 70%;
+  margin: 0 0.2em;
+  cursor: pointer;
+  text-align: start;
+}
+
+.todo p {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.todo img {
+  max-width: 30px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hover {
+  display: flex;
+  justify-content: center;
+}
+
+.hover:hover {
+  border-bottom: 1px solid white;
+  transition: 0.5s;
+}
+
+.edit-div,
+.delete-div {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: 27px;
+  align-self: center;
+  border-radius: 50%;
+  /* padding: 1px; */
+}
+
+.edit-div img {
+  height: 25px;
+  width: 32px;
+  /* padding-left: 7px; */
+}
+
+.delete-div img {
+  height: 30px;
+  /* width: 60px; */
+}
+
+.strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: aliceblue;
+  font-weight: bold;
+}
+
+.empty-state p {
+  font-size: 1rem;
+}
+
+.empty-state img {
+  background-color: rgba(0, 0, 0, 0.781);
+  border-radius: 5px;
+}
+
+/* EDIT FORM */
+.edit_form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1rem;
+}
+
+.edit_form h3 {
+  color: #33a17c;
+}
+
+.input_new {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.input_new input {
+  padding: 0.5em;
+  margin-top: 0.5em;
+  border: none;
+  border-radius: 3px;
+}
+
+.input_new input:hover {
+  background-color: rgba(255, 255, 255, 0.89);
+  border: 2px solid #33a17c;
+  transition: 0.5s;
+}
+
+.input_new input::placeholder:hover {
+  display: none;
+  transition: 0.5s;
+}
+
+.task_name {
+  color: #eb86bf;
+}
+
+.buttons_input_new {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons_input_new button {
+  padding: 0.4em;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Karla", sans-serif;
+}
+
+.buttons_input_new button:first-child {
+  background-color: rgba(255, 0, 0, 0.849);
+  color: white;
+}
+
+.buttons_input_new button:last-child {
+  background-color: white;
+  color: black;
+}
+
+/* ASSIGNMENT PAGE */
+.FormApp {
+  background-color: rgba(240, 248, 255, 0.575);
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px solid;
+  margin: 1.5em auto;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.FormApp .form {
+  margin-top: 1em;
+}
+
+.FormApp input[type="submit"] {
+  padding: 0.75em;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+.FormApp input[type="submit"]:hover {
+  border: 1px solid white;
+  transition: 0.5s;
+}
+
+.FormApp input[type="text"],
+.FormApp input[type="email"],
+.FormApp input[type="password"],
+.FormApp select {
+  padding: 0.5em;
+  border: 1.5px solid;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media screen and (max-width: 600px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .App {
+    width: 90%;
+    align-self: center;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .todo {
+    font-size: 1rem;
+  }
+
+  .FormApp {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .links a {
+    font-size: 14px;
+  }
+
+  .todo {
+    width: 80%;
   }
 }
