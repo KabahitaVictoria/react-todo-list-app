@@ -14,6 +14,7 @@ This is a simple Todo List app built using React. It allows users to manage thei
 ## Features
 
 - Add, edit, and delete tasks
+- Preventing the addition of tasks with the same name, and their corresponding error messages.
 - Mark tasks as complete
 - Responsive design for various screen sizes
 
