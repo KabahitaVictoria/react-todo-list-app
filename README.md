@@ -20,7 +20,7 @@ This is a simple Todo List app built using React. It allows users to manage thei
 
 ## Demo
 
-Check out the [live demo](https://calm-truffle-4732f7.netlify.app/form) of the app!
+Check out the [live demo](https://calm-truffle-4732f7.netlify.app/) of the app!
 
 ## Contributing
 Contributions are welcome! If you find any bugs or want to improve the app, feel free to open an issue or submit a pull request.
